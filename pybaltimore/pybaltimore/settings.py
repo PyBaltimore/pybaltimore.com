@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8gogmr4=@f9$i)5=qj4y(9#*(437b4^=q!$d*wgab15@walcfa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") != "False"
+PRODUCTION = os.environ.get("Production", "True") != "False"
 
 ALLOWED_HOSTS = ['*',]
 
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'pybaltimore.urls'
@@ -80,6 +82,10 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+import dj_database_url
+db_from_ebv = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -119,3 +125,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+if os.environ.get("SENTRY_ENABLE", "False") == "True":
+    import raven
+    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+    RAVEN_CONFIG = {
+        'dsn': 'https://462213decbcd4c8eaf9852b7835842f2:897b441c98b34c51b2f8ba4dac625965@sentry.io/1243613',
+        # If you are using git, you can also automatically configure the
+        # release based on the git info.
+        'release': os.environ.get("HEROKU_SLUG_DESCRIPTION", 'unknown'),
+}
