@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath .wsgi --log-file -
+web: gunicorn --pythonpath pybaltimore pybaltimore.wsgi --log-file -
