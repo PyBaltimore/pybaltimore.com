@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>{% block pagetitle %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static "events/css/pybaltimore.css" %}">
+        {% block extrahead %}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <div class="left-column">
+                <a href="{% url 'events_list' %} ">
+                    <img src="{% static 'events/imgs/pybaltimore.png' %}" alt="pyBaltimore" class="avatar" />
+                </a>
+                <ul class="page-list">
+                    <li><a href="{% url 'events_list' %}">Events</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                </ul>
+                <div class="socials">
+                    <a href="http://twitter.com/pybaltimore/"<i class="fab fa-twitter"></i></a>
+                    <a href="http://github.com/pybaltimore/"><i class="fab fa-github"></i></a>
+                    <a href="https://www.meetup.com/baltimore-python/"><i class="fab fa-meetup"></i></a>
+
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="content">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

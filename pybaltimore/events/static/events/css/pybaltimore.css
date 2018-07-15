@@ -1,0 +1,80 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: .25em;
+}
+h1,h2,h3,h4 {
+    color: #333;
+    font-weight: normal;
+}
+
+.page-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.left-column {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 80px;
+    height: 100%;
+}
+
+.left-column .avatar {
+    border: 1px solid #fff;
+    height: 79px;
+    width: 79px;
+}
+.left-column .socials {
+    padding-top: 8px;
+    display: block;
+    text-align: center;
+}
+.left-column .socials a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.left-column ul.page-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.left-column ul.page-list li {
+    padding: 2px 0 2px 10px;
+}
+.left-column ul.page-list a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.right-column {
+    margin-left: 105px;
+    min-height: 100%;
+    margin-bottom: 50px;
+}
+
+.event {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.event .name {
+    color: #555;
+    font-size: 20px;
+    margin-bottom: .15em;
+}
+.event .date, .event .location {
+    color: #666;
+    font-size: 16px;
+}
