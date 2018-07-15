@@ -6,7 +6,7 @@ class LocalEvent(models.Model):
     description = models.CharField(blank=True,
                                    max_length=200)
     date = models.DateField()
-    datetime = models.DateTimeField(blank=True)
+    datetime = models.DateTimeField(blank=True, null=True)
     hidden = models.BooleanField(help_text="if this is selected the event will not be shown on the public site")
     location = models.TextField(blank=True)
     external_link = models.TextField(blank=True)
