@@ -30,6 +30,6 @@ def _sort_events_into_days(event_list):
             events_to_days[event.date] = [event,]
         else:
             events_to_days[event.date].append(event)
-    for key in sorted(events_to_days.keys(), reverse=True):
+    for key in sorted(events_to_days.keys()):
         result.append((key, events_to_days[key]))
     return result
