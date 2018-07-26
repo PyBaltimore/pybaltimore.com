@@ -2,11 +2,14 @@
 
 {% block content %}
     <h1>Upcoming Local Events</h1>
-    {% for event in events %}
+    {% for day_and_events in events %}
+        <h3>{{ day_and_events.0 }}</h3>
+        {% for event in day_and_events.1 %}
         <div class="event">
-            <div class="name">{{ event.name }} <a href="{{ event.external_link }}"><i class="fas fa-link"></i></a></div>
+            <div class="name">{{ event.name }}{% if event.external_link != "" %} <a href="{{ event.external_link }}"><i class="fas fa-link"></i></a>{% endif %}</div>
             <div class="date">{{ event.publishable_datetime }}</div>
             <div class="location">{{ event.location }}</div>
         </div>
+        {% endfor %}
     {% endfor %}
 {% endblock %}
