@@ -74,6 +74,11 @@ h1,h2,h3,h4 {
     font-size: 20px;
     margin-bottom: .15em;
 }
+.event .name a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px
+}
 .event .date, .event .location {
     color: #666;
     font-size: 16px;

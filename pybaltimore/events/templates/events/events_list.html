@@ -4,7 +4,7 @@
     <h1>Upcoming Local Events</h1>
     {% for event in events %}
         <div class="event">
-            <div class="name">{{ event.name }}</div>
+            <div class="name">{{ event.name }} <a href="{{ event.external_link }}"><i class="fas fa-link"></i></a></div>
             <div class="date">{{ event.publishable_datetime }}</div>
             <div class="location">{{ event.location }}</div>
         </div>
